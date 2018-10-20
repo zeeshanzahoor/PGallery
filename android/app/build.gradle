@@ -137,7 +137,13 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-vector-icons')
+    compile project(':realm')
     compile project(':react-native-image-crop-picker')
+    compile project(':react-native-fs')
+    compile project(':appcenter-crashes')
+    compile project(':appcenter-analytics')
+    compile project(':appcenter')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation "com.facebook.react:react-native:+"  // From node_modules
