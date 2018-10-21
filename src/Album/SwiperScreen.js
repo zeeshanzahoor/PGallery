@@ -5,8 +5,8 @@ import {
     Image,
     Dimensions,
     Button
-} from 'react-native'
-import Swiper from 'react-native-swiper'
+} from 'react-native';
+import Swiper from 'react-native-swiper';
 const { width, height } = Dimensions.get('window')
 
 const styles = {

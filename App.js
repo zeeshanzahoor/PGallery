@@ -7,21 +7,32 @@ import {
 } from 'react-native';
 
 import BottomNavigation from './src/Navigation/BottomNavigation';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import withRedux from "./src/Store/withRedux";
+import LockScreen from './src/Lock/LockScreen';
+
+
 
 
 class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.innerContainer}>
-          <BottomNavigation>
-          </BottomNavigation>
+        <View style={styles.container}>
+          <View style={styles.innerContainer}>
+            {this.props.AppLock.Locked &&
+              <LockScreen />
+            }
+            {!this.props.AppLock.Locked &&
+              <BottomNavigation>
+              </BottomNavigation>
+            }
+          </View>
         </View>
-      </View>
     );
   }
 }
-export default App;
+export default withRedux(App);
 
 const styles = StyleSheet.create({
   container: {

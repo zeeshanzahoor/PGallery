@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Button } from 'react-native';
 import withRedux from '../Store/withRedux';
 
-class SettingsScreen extends Component {
+class LockScreen extends Component {
     constructor(props) {
         super(props);
         console.log(this.props);
@@ -24,4 +24,4 @@ class SettingsScreen extends Component {
     }
 }
 
-export default withRedux(SettingsScreen);
+export default withRedux(LockScreen);
