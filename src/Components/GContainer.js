@@ -3,7 +3,7 @@ import { View, Text, ScrollView } from 'react-native';
 
 class GContainer extends Component {
     render() {
-        const styles = { flex: 1, padding: 10 };
+        const styles = { flex: 1, padding: 10 , marginBottom:40,};
         if(this.props.noPadding)
         {
             styles.padding = 0;

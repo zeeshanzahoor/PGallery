@@ -10,11 +10,7 @@ import BottomNavigation from './src/Navigation/BottomNavigation';
 
 
 class App extends React.Component {
-
   render() {
-
-
-
     return (
       <View style={styles.container}>
         <View style={styles.innerContainer}>

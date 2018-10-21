@@ -9,7 +9,6 @@ class HomeScreen extends Component {
     render() {
         return (
             <GContainer noPadding>
-
                 <ScrollView showsVerticalScrollIndicator={false} bouncesZoom={true} contentContainerStyle={styles.innerContainer}>
                     <View style={styles.cardContainer}>
                         <GCard img={{ uri: require("../../img/taylor.jpg") }}></GCard>

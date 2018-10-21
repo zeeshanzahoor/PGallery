@@ -31,6 +31,8 @@ const styles = StyleSheet.create({
     cardContainer: {
         height: 170,
         width: '48.5%',
+        borderRadius: 7,
+        backgroundColor:'transparent',
     },
     cardInnerContainer: {
         flex: 1,
@@ -45,7 +47,8 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         backgroundColor: 'white',
-        opacity: 0.6,
+        opacity: 0.5,
+        borderRadius:7,
         justifyContent: 'center',
         alignItems: 'center',
         paddingLeft: 10,
