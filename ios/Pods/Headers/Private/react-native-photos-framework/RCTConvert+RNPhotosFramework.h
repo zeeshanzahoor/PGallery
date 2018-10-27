@@ -1,0 +1,1 @@
+../../../../../node_modules/react-native-photos-framework/ios/RNPhotosFramework/RCTConvert+RNPhotosFramework.h

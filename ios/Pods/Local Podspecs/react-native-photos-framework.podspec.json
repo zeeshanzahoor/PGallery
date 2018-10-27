@@ -1,0 +1,24 @@
+{
+  "name": "react-native-photos-framework",
+  "version": "1.0.8",
+  "summary": "Use Apples Photos Framework with react-native to fetch media from CameraRoll and iCloud",
+  "requires_arc": true,
+  "license": "MIT",
+  "homepage": "https://github.com/olofd/react-native-photos-framework",
+  "authors": {
+    "name": "Olof Dahlbom olof.dahlbom@me.com"
+  },
+  "source": {
+    "git": "git+https://github.com/olofd/react-native-photos-framework.git",
+    "tag": "v1.0.8"
+  },
+  "source_files": "ios/**/*.{h,m}",
+  "platforms": {
+    "ios": "8.0"
+  },
+  "dependencies": {
+    "React/Core": [
+
+    ]
+  }
+}

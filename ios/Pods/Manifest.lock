@@ -9,6 +9,8 @@ PODS:
   - QBImagePickerController (3.4.0)
   - React (0.57.3):
     - React/Core (= 0.57.3)
+  - react-native-photos-framework (1.0.8):
+    - React/Core
   - React/Core (0.57.3):
     - yoga (= 0.57.3.React)
   - React/fishhook (0.57.3)
@@ -52,6 +54,7 @@ DEPENDENCIES:
   - AppCenter/Analytics (~> 1.10.0)
   - AppCenter/Crashes (~> 1.10.0)
   - AppCenterReactNativeShared (~> 1.9.0)
+  - react-native-photos-framework (from `../node_modules/react-native-photos-framework`)
   - React/Core (from `../node_modules/react-native`)
   - React/RCTActionSheet (from `../node_modules/react-native`)
   - React/RCTAnimation (from `../node_modules/react-native`)
@@ -71,6 +74,8 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   React:
     :path: ../node_modules/react-native
+  react-native-photos-framework:
+    :path: ../node_modules/react-native-photos-framework
   RNFS:
     :path: ../node_modules/react-native-fs
   RNImageCropPicker:
@@ -85,12 +90,13 @@ SPEC CHECKSUMS:
   AppCenterReactNativeShared: a4bf64d2fae919fc0b235fe47a02ef9ddd3a0011
   QBImagePickerController: d54cf93db6decf26baf6ed3472f336ef35cae022
   React: a197ec4fee34abff321271f5614cabc517faed71
+  react-native-photos-framework: 7f7ee7060fe4aeddb306b161f4a923a9ac6425bd
   RNFS: adcee9a3e7cec0469b7709535504aac628a9ed2e
   RNImageCropPicker: 287fc8b372e49855fd00470393005fca674628f3
   RNVectorIcons: d819334932bcda3332deb3d2c8ea4d069e0b98f9
   RSKImageCropper: 0d0c6d8525a2381f03fde32a47c6703817a2feed
   yoga: c991dffbcb89c7eee1aadf243b72e48d462ee34a
 
-PODFILE CHECKSUM: b5af0342d0e8a7df5429248f6a1cd2f5d3ef844f
+PODFILE CHECKSUM: 8cd854f38efe07ba6d70018cd2ef6f69899903ee
 
 COCOAPODS: 1.3.1

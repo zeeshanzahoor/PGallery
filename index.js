@@ -23,7 +23,5 @@ class AppStarter extends React.Component {
     );
   }
 }
- 
-
 
 AppRegistry.registerComponent(appName, () => AppStarter);

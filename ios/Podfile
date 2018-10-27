@@ -18,12 +18,14 @@ target 'PGallery' do
     'RCTSettings',
     'RCTText',
     'RCTVibration',
-    'RCTWebSocket'
+    'RCTWebSocket',
   ]
   pod 'RNImageCropPicker', :path =>  '../node_modules/react-native-image-crop-picker'
   pod 'RNFS', :path => '../node_modules/react-native-fs'
   platform :ios, '9.0'
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+  pod 'react-native-photos-framework', :path => '../node_modules/react-native-photos-framework'
+
 
 end
 
