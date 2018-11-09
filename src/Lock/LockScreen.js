@@ -5,6 +5,9 @@ import withRedux from '../Store/withRedux';
 class LockScreen extends Component {
     constructor(props) {
         super(props);
+        this.albums = this.props.realm.objects('Album');
+    }
+    componentWillMount() {
         console.log(this.props);
     }
     render() {
@@ -18,7 +21,9 @@ class LockScreen extends Component {
                 </Button>
                 <Text>
                     {this.props.AppLock.Locked.toString()}
+                    {this.albums[0].Title}
                 </Text>
+
             </View>
         );
     }

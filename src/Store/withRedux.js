@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import realm from '../DB/Schema';
 
-export default function withRedux(HocComponent, styles) {
+export default function withRedux(HocComponent) {
 	class Hoc extends Component {
 		constructor(props) {
 			super(props);
 		}
 		render() {
 			return (
-				<HocComponent  {...this.props}></HocComponent>
+				<HocComponent  {...this.props} realm={realm}></HocComponent>
 			);
 		}
 	}
@@ -16,6 +17,7 @@ export default function withRedux(HocComponent, styles) {
 		return state;
 	}
 
+	
 	const connectedPage = connect(mapStateToProps)(Hoc);
 	return connectedPage;
 }

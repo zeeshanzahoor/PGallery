@@ -9,8 +9,14 @@ import RNPhotosFramework from 'react-native-photos-framework';
 class FavouriteScreen extends Component {
     constructor(props) {
         super(props);
-
-        RNFS.readDir(RNFS.MainBundlePath+"") 
+        const p = RNFS.DocumentDirectoryPath + '/MyImages';
+        console.log(p);
+        RNFS.mkdir(p, {
+            NSURLIsExcludedFromBackupKey: true,
+        }).then(r => {
+            console.log(r);
+        });
+        RNFS.readDir(p)
             .then((result) => {
                 console.log('GOT RESULT', result);
             })
@@ -32,8 +38,8 @@ class FavouriteScreen extends Component {
         }).then((response) => {
             console.log(response.assets[0].image);
             console.log(response.assets);
-            RNFS.copyAssetsFileIOS('assets-library://asset/asset.JPG?id=' + response.assets[0].localIdentifier, RNFS.MainBundlePath+'/MyImages/check.jpg', 200, 200).then((v) => console.log(v));
-            this.setState({ image: response.assets[0].image });
+             RNFS.copyAssetsFileIOS('assets-library://asset/asset.JPG?id=' + response.assets[0].localIdentifier, p+'/check.jpg', 200, 200).then((v) => console.log(v));
+             this.setState({ image: response.assets[0].image });
         });
     }
     render() {

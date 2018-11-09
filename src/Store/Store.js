@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 const INITIAL_STATE = {
-    Locked: true
+    Locked: true,
 };
 
 const AppLock = (state = INITIAL_STATE, action) => {
