@@ -20,7 +20,6 @@ class DefaultBottomNavBar extends Component {
   }
   render() {
     const { routeName } = this.props.navigation.state;
-    console.log(routeName);
     return (
       <View>
         <Ionicons name={iconName} size={!focused ? 30 : 32} color={tintColor} />
@@ -38,33 +37,6 @@ const BottomNavigation = createBottomTabNavigator({
   Camera: CameraScreen,
 },
   {
-    // navigationOptions: ({ navigation }) => ({
-    //   tabBarIcon: ({ focused, horizontal, tintColor }) => {
-    //     const { routeName } = navigation.state;
-    //     let iconName;
-    //     if (routeName === 'Album') {
-    //       iconName = 'ios-photos';
-    //     }
-    //     else if (routeName === 'Favourite') {
-    //       iconName = 'ios-heart';
-    //     }
-    //     else if (routeName === 'Home') {
-    //       iconName = 'ios-albums';
-    //     }
-    //     else if (routeName === 'Settings') {
-    //       iconName = 'ios-settings';
-    //     }
-    //     else if (routeName === 'Camera') {
-    //       iconName = 'ios-camera';
-    //     }
-    //     if (!focused) {
-    //       iconName += '';
-    //     }
-    //     return (
-    //       <Ionicons name={iconName} size={!focused ? 30 : 32} color={tintColor} />
-    //     );
-    //   },
-    // }),
     tabBarComponent: GFooter,
     initialRouteName: 'Home',
     tabBarOptions: {

@@ -32,10 +32,10 @@ const styles = StyleSheet.create({
   },
   logo: {
     fontFamily: 'Billabong',
-    fontSize: 35,
+    fontSize: 25,
     textAlign: 'center',
     alignSelf: 'center',
     fontWeight: '900',
-    marginTop: 30,
+    marginTop: 20,
   }
 });

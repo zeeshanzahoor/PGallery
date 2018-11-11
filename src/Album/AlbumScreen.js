@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList, Dimensions, Image, TouchableOpacity } from 'react-native';
 import { GContainer } from '../Components';
+import {GHeader} from "../Components";
+import Constants from '../Constants';
 
 const data = [
     { key: 'A' }, { key: 'B' }, { key: 'C' }, { key: 'D' }, { key: 'E' }, { key: 'F' }, { key: 'G' }, { key: 'H' }, { key: 'I' }, { key: 'J' },
@@ -13,7 +15,6 @@ const formatData = (data, numColumns) => {
         data.push({ key: `blank-${numberOfElementsLastRow}`, empty: true });
         numberOfElementsLastRow++;
     }
-
     return data;
 };
 

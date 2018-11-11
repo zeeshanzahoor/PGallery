@@ -16,7 +16,7 @@ class GCard extends Component {
                 }}>
                     <Image blurRadius={25} style={styles.Image} resizeMode="cover" source={s}></Image>
                     <View style={styles.TitleBox}>
-                        <Text style={styles.Title}>Camera Roll</Text>
+                        <Text style={styles.Title}>{this.props.Title}</Text>
                         <Text style={styles.Title}>(0)</Text>
                     </View>
                 </TouchableOpacity>
