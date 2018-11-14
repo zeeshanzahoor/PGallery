@@ -16,15 +16,19 @@ class BIconButton extends React.Component {
         if (this.props.route) {
           this.props.navigation.navigate(this.props.route);
         }
+        else if(this.props.action)
+        {
+          switch (this.props.action)
+          {
+          }
+        }
         else {
           ImagePicker.openPicker({
             width: 300,
             height: 400,
             cropping: false,
           }).then(image => {
-           
             
-
           });
         }
       }}>

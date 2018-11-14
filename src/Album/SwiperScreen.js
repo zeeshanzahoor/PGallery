@@ -3,11 +3,14 @@ import {
     Text,
     View,
     Image,
-    Dimensions,
+    Dimensions, StyleSheet,
     Button
 } from 'react-native';
 import Swiper from 'react-native-swiper';
-const { width, height } = Dimensions.get('window')
+import withRedux from '../Store/withRedux';
+
+
+const { width, height } = Dimensions.get('window');
 
 const styles = {
     wrapper: {
@@ -17,7 +20,7 @@ const styles = {
         flex: 1,
         justifyContent: 'center',
         backgroundColor: 'transparent',
-        justifyContent:'center',
+        justifyContent: 'center',
     },
     text: {
         color: '#fff',
@@ -39,83 +42,108 @@ const styles = {
     }
 }
 
-export default class SwiperScreen extends Component {
-    render() {
-        console.log(this.props);
-        return (
-            <View style={{ flex: 1, }}>
+const renderPagination = (index, total, context) => {
+    return (
+        <View style={styles.paginationStyle}>
+            <Text style={{ color: 'grey' }}>
+                <Text style={styles.paginationText}>{index + 1}</Text>/{total}
+            </Text>
+        </View>
+    )
+}
 
+class SwiperScreen extends Component {
+    
+    componentWillMount() {
+        const { dispatch } = this.props;
+        dispatch({ type: "OpenSwiper" });
+        this.didBlurSubscription = this.props.navigation.addListener('willBlur',
+            payload => {
+                const { dispatch } = this.props;
+                dispatch({ type: "CloseSwiper" });
+            }
+        );
+        this.props.navigation.setParams({ title: 'your content' })
+    }
+    componentWillUnmount() {
+        this.didBlurSubscription.remove();
+    }
+    render() {
+        return (
+            <View style={mstyles.Container}>
                 <View style={styles.wrapper}>
                     <Swiper
-                        showsButtons={true}
+                        showsButtons={false}
+                        renderPagination={renderPagination}
                         style={styles.wrapper}
                         loop={true}>
+
                         <View style={styles.slide}>
-                            <Image style={{width:null}} resizeMode="contain" source={require('../../img/alia.jpg')}></Image>
+                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/alia.jpg')}></Image>
                         </View>
                         <View style={styles.slide}>
-                            <Image style={{width:null}} resizeMode="contain" source={require('../../img/momina.jpg')}></Image>
+                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/momina.jpg')}></Image>
                         </View>
                         <View style={styles.slide}>
-                            <Image style={{width:null}} resizeMode="contain" source={require('../../img/taylor.jpg')}></Image>
+                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/taylor.jpg')}></Image>
                         </View>
                         <View style={styles.slide}>
-                            <Image style={{width:null}} resizeMode="contain" source={require('../../img/alia.jpg')}></Image>
+                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/alia.jpg')}></Image>
                         </View>
                         <View style={styles.slide}>
-                            <Image style={{width:null}} resizeMode="contain" source={require('../../img/momina.jpg')}></Image>
+                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/momina.jpg')}></Image>
                         </View>
                         <View style={styles.slide}>
-                            <Image style={{width:null}} resizeMode="contain" source={require('../../img/taylor.jpg')}></Image>
+                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/taylor.jpg')}></Image>
                         </View>
                         <View style={styles.slide}>
-                            <Image style={{width:null}} resizeMode="contain" source={require('../../img/alia.jpg')}></Image>
+                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/alia.jpg')}></Image>
                         </View>
                         <View style={styles.slide}>
-                            <Image style={{width:null}} resizeMode="contain" source={require('../../img/momina.jpg')}></Image>
+                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/momina.jpg')}></Image>
                         </View>
                         <View style={styles.slide}>
-                            <Image style={{width:null}} resizeMode="contain" source={require('../../img/taylor.jpg')}></Image>
+                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/taylor.jpg')}></Image>
                         </View>
                         <View style={styles.slide}>
-                            <Image style={{width:null}} resizeMode="contain" source={require('../../img/alia.jpg')}></Image>
+                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/alia.jpg')}></Image>
                         </View>
                         <View style={styles.slide}>
-                            <Image style={{width:null}} resizeMode="contain" source={require('../../img/momina.jpg')}></Image>
+                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/momina.jpg')}></Image>
                         </View>
                         <View style={styles.slide}>
-                            <Image style={{width:null}} resizeMode="contain" source={require('../../img/taylor.jpg')}></Image>
+                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/taylor.jpg')}></Image>
                         </View>
                         <View style={styles.slide}>
-                            <Image style={{width:null}} resizeMode="contain" source={require('../../img/alia.jpg')}></Image>
+                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/alia.jpg')}></Image>
                         </View>
                         <View style={styles.slide}>
-                            <Image style={{width:null}} resizeMode="contain" source={require('../../img/momina.jpg')}></Image>
+                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/momina.jpg')}></Image>
                         </View>
                         <View style={styles.slide}>
-                            <Image style={{width:null}} resizeMode="contain" source={require('../../img/taylor.jpg')}></Image>
+                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/taylor.jpg')}></Image>
                         </View>
                         <View style={styles.slide}>
-                            <Image style={{width:null}} resizeMode="contain" source={require('../../img/alia.jpg')}></Image>
+                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/alia.jpg')}></Image>
                         </View>
                         <View style={styles.slide}>
-                            <Image style={{width:null}} resizeMode="contain" source={require('../../img/momina.jpg')}></Image>
+                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/momina.jpg')}></Image>
                         </View>
                         <View style={styles.slide}>
-                            <Image style={{width:null}} resizeMode="contain" source={require('../../img/taylor.jpg')}></Image>
+                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/taylor.jpg')}></Image>
                         </View>
                     </Swiper>
                 </View>
-                <View style={{
-                    height: 60, backgroundColor: '#ccc', position: 'absolute'
-                    , bottom: 0, width: '100%'
-                }}>
-                <Button title="Back" onPress={()=>{
-                    this.props.navigation.goBack();
-                }}>
-                </Button>
-                </View>
+
             </View>
         )
     }
 }
+
+export default withRedux(SwiperScreen);
+
+const mstyles = StyleSheet.create({
+    Container: {
+
+    },
+})

@@ -4,6 +4,7 @@ import realm from '../DB/Schema';
 
 export default function withRedux(HocComponent) {
 	class Hoc extends Component {
+		static navigationOptions = HocComponent.navigationOptions;
 		constructor(props) {
 			super(props);
 		}
@@ -17,7 +18,7 @@ export default function withRedux(HocComponent) {
 		return state;
 	}
 
-	
+
 	const connectedPage = connect(mapStateToProps)(Hoc);
 	return connectedPage;
 }

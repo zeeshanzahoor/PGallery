@@ -9,10 +9,9 @@ class GCard extends Component {
     render() {
         const s = this.props.img.uri;
         return (
-
             <View style={styles.cardContainer}>
                 <TouchableOpacity style={styles.cardInnerContainer} onPress={() => {
-                    this.props.navigation.navigate("Album")
+                    this.props.navigation.navigate("Album", {Title: this.props.Title})
                 }}>
                     <Image blurRadius={25} style={styles.Image} resizeMode="cover" source={s}></Image>
                     <View style={styles.TitleBox}>

@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList, Dimensions, Image, TouchableOpacity } from 'react-native';
 import { GContainer } from '../Components';
-import {GHeader} from "../Components";
+import { GHeader } from "../Components";
 import Constants from '../Constants';
+import withRedux from '../Store/withRedux';
 
 const data = [
     { key: 'A' }, { key: 'B' }, { key: 'C' }, { key: 'D' }, { key: 'E' }, { key: 'F' }, { key: 'G' }, { key: 'H' }, { key: 'I' }, { key: 'J' },
@@ -19,7 +20,14 @@ const formatData = (data, numColumns) => {
 };
 
 const numColumns = 4;
-export default class AlbumScreen extends React.Component {
+class AlbumScreen extends React.Component {
+    static navigationOptions = ({ navigation }) => {
+        // const title = navigation.state.params.Title;
+        // return {
+        //     title,
+        //     headerBackTitle:null,
+        // };
+    };
     renderItem = ({ item, index }) => {
         if (item.empty === true) {
             return <View style={[styles.item, styles.itemInvisible]} />;
@@ -32,7 +40,6 @@ export default class AlbumScreen extends React.Component {
             </TouchableOpacity>
         );
     };
-
     render() {
         return (
             <GContainer noPadding>
@@ -46,6 +53,7 @@ export default class AlbumScreen extends React.Component {
     }
 }
 
+export default withRedux(AlbumScreen, { title: "Zee" });
 const styles = StyleSheet.create({
     container: {
         flex: 1,

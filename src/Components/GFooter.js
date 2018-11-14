@@ -7,19 +7,35 @@ import {
 } from 'react-native';
 import { BIconButton } from './BButton';
 
-export default class GFooter extends React.Component {
+import withRedux from '../Store/withRedux';
+
+class GFooter extends React.Component {
+
   render() {
-    return (
-      <View style={styles.wrapper}>
-        <BIconButton {...this.props} size={25} Icon="ios-apps" route="Home" />
-        <BIconButton {...this.props} size={25} Icon="ios-heart" route="Favourite" />
-        <BIconButton {...this.props} size={35} Icon="ios-add-circle" />
-        <BIconButton {...this.props} size={25} Icon="ios-settings" route="Settings" />
-        <BIconButton {...this.props} size={30} Icon="ios-camera" route="Camera" />
-      </View>
-    );
+    if (this.props.AppState.Swiper) {
+      return (
+        <View style={styles.wrapper}>
+          <BIconButton {...this.props} size={30} Icon="ios-share" action="Home" />
+          <BIconButton {...this.props} size={30} Icon="ios-heart" action="Favourite" />
+          <BIconButton {...this.props} size={30} Icon="ios-trash" action="Settings" />
+        </View>
+      );
+    }
+    else {
+      return (
+        <View style={styles.wrapper}>
+          <BIconButton {...this.props} size={25} Icon="ios-albums" route="Home" />
+          <BIconButton {...this.props} size={25} Icon="ios-photos" route="Favourite" />
+          <BIconButton {...this.props} size={35} Icon="ios-add-circle" />
+          <BIconButton {...this.props} size={25} Icon="ios-settings" route="Settings" />
+          <BIconButton {...this.props} size={30} Icon="ios-camera" route="Camera" />
+        </View>
+      );
+    }
   }
 }
+
+export default withRedux(GFooter);
 
 const styles = StyleSheet.create({
   wrapper: {

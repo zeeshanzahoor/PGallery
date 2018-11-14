@@ -9,7 +9,7 @@ import { Button, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
-const RootStack = createStackNavigator({
+const AlbumStackNavigation = createStackNavigator({
     Home: {
         screen: HomeScreen,
         navigationOptions: ({ navigate, navigation }) => ({
@@ -21,37 +21,39 @@ const RootStack = createStackNavigator({
     },
     Album: {
         screen: AlbumScreen,
-        navigationOptions: {
-            headerTitle: "My Images",
-        }
-    }
-});
-
-const AlbumStackNavigation = createStackNavigator({
-    Main: {
-        screen: RootStack,
     },
     Swiper: {
         screen: SwiperScreen,
-    },
-    CreateAlbum: {
-        screen: CreateAlbumScreen,
-    }
-},
-    {
-        mode: 'modal',
-        headerMode: 'none',
-    });
 
-AlbumStackNavigation.navigationOptions = ({ navigation }) => {
-    let tabBarVisible = true;
-    if (navigation.state.index > 0) {
-        tabBarVisible = false;
     }
-    return {
-        tabBarVisible,
-    };
-};
+});
+
+// const AlbumStackNavigation = createStackNavigator({
+//     Main: {
+//         screen: RootStack,
+//         headerMode: 'none',
+//         header: null,
+//         navigationOptions: {
+//             header: null,
+//         }
+//     },
+//     Swiper: {
+//         screen: SwiperScreen,
+//     }
+// },
+//     {
+//     });
+
+// AlbumStackNavigation.navigationOptions = ({ navigation }) => {
+//     let tabBarVisible = true;
+//     return true;
+//     if (navigation.state.index > 0) {
+//         tabBarVisible = false;
+//     }
+//     return {
+//         tabBarVisible,
+//     };
+// };
 
 export default AlbumStackNavigation;
 

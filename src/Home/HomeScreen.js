@@ -6,6 +6,8 @@ import Constants from '../Constants';
 import withRedux from '../Store/withRedux';
 import Modal from "react-native-modal";
 import CreateAlbumScreen from '../Album/CreateAlbumScreen';
+import { connect } from "react-redux";
+
 
 const CreateAlbumChunkComps = (props) => {
     return <View style={styles.cardContainer}>
@@ -35,12 +37,12 @@ class HomeScreen extends Component {
     }
     *SplitArray(arr) {
         while (arr.length > 0) {
-         var temp = arr.slice(0, 2);
-         arr = arr.slice(2, arr.length);
-         yield temp;
+            var temp = arr.slice(0, 2);
+            arr = arr.slice(2, arr.length);
+            yield temp;
         }
     };
-    
+
     render() {
         var AlbumComps = [];
         const MyAlbums = this.state.Albums;
@@ -54,8 +56,8 @@ class HomeScreen extends Component {
             <GContainer noPadding>
                 <ScrollView showsVerticalScrollIndicator={false} bouncesZoom={true} contentContainerStyle={styles.innerContainer}>
                     {
-                        AlbumComps.map((item, index)=>{
-                            return <CreateAlbumChunkComps key={index} Items={item}/>
+                        AlbumComps.map((item, index) => {
+                            return <CreateAlbumChunkComps key={index} Items={item} />
                         })
                     }
                 </ScrollView>
@@ -65,9 +67,17 @@ class HomeScreen extends Component {
             </GContainer>
         );
     }
+    
+}
+function mapStateToProps(state) {
+    return state;
 }
 
-export default withRedux(HomeScreen);
+//export default HomeScreen;
+
+//const connectedPage = connect(mapStateToProps)(HomeScreen);
+//export default connectedPage;
+ export default withRedux(HomeScreen);
 
 
 const styles = StyleSheet.create({
