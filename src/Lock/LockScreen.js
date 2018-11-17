@@ -4,7 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import withRedux from '../Store/withRedux';
 
 
-const RoundButtonWithIcon = (props)=>{
+const RoundButtonWithIcon = (props) => {
     return (
         <TouchableOpacity style={styles.RoundButton} onPress={props.OnButtonPress}>
             <Ionicons name={props.Icon} size={30} color={'white'} />
@@ -41,8 +41,8 @@ class LockScreen extends Component {
     componentWillMount() {
         console.log(this.props);
     }
-    OnBackSpacePress =()=>{
-        this.setState({CurrentPass:this.state.CurrentPass.substring(0, this.state.CurrentPass.length-1)});
+    OnBackSpacePress = () => {
+        this.setState({ CurrentPass: this.state.CurrentPass.substring(0, this.state.CurrentPass.length - 1) });
     };
     OnButtonPress = (ch) => {
         if (this.state.CurrentPass.length < 3) {
@@ -56,8 +56,7 @@ class LockScreen extends Component {
                     const { dispatch } = $this.props;
                     dispatch({ type: "Unlock" });
                 }
-                else
-                {
+                else {
                     $this.setState({ CurrentPass: '' });
                 }
             }, 300);
@@ -98,7 +97,7 @@ class LockScreen extends Component {
                     <View style={styles.ButtonRow}>
                         <RoundButtonWithIcon Icon="ios-camera" OnButtonPress={() => { }}></RoundButtonWithIcon>
                         <RoundButton OnButtonPress={() => { this.OnButtonPress(0) }} title="0"></RoundButton>
-                        <RoundButtonWithIcon Icon="ios-backspace" OnButtonPress={() => { this.OnBackSpacePress();}}></RoundButtonWithIcon>
+                        <RoundButtonWithIcon Icon="ios-backspace" OnButtonPress={() => { this.OnBackSpacePress(); }}></RoundButtonWithIcon>
                     </View>
                 </View>
             </View>
@@ -117,7 +116,7 @@ const styles = StyleSheet.create({
     },
     ButtonContainer: { flex: 2, paddingLeft: 20, paddingRight: 20, },
     ButtonRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', paddingBottom: 20, },
-    EnterPinText: { color: 'white', textAlign: 'center', fontSize: 17, marginBottom: 30, },
+    EnterPinText: { color: 'white', textAlign: 'center', fontSize: 24, marginBottom: 30, },
     RoundStarContainer: {
         flexDirection: 'row',
         justifyContent: "center",

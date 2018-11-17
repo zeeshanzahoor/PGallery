@@ -50,5 +50,4 @@ var newPath = '/Users/zahoor/Desktop/Realm/PGallery.realm';
 module.exports = new Realm({
     schema: [Album, Media, AlbumMedia, AppSetting],
     schemaVersion: 3,
-    path: newPath
 });

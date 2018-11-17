@@ -1,7 +1,106 @@
 import React, { Component } from 'react';
 import { View, Text, Button } from 'react-native';
 import withRedux from '../Store/withRedux';
+import Gallery from 'react-native-photo-gallery';
 
+const data = [
+    {
+      image: require('../../img/alia.jpg'),
+      thumb: require('../../img/alia.jpg'),
+    },
+    {
+        image: require('../../img/alia.jpg'),
+        thumb: require('../../img/alia.jpg'),
+      },
+      {
+        image: require('../../img/alia.jpg'),
+        thumb: require('../../img/alia.jpg'),
+      },
+      {
+        image: require('../../img/alia.jpg'),
+        thumb: require('../../img/alia.jpg'),
+      },
+      {
+        image: require('../../img/alia.jpg'),
+        thumb: require('../../img/alia.jpg'),
+      },
+      {
+          image: require('../../img/alia.jpg'),
+          thumb: require('../../img/alia.jpg'),
+        },
+        {
+          image: require('../../img/alia.jpg'),
+          thumb: require('../../img/alia.jpg'),
+        },
+        {
+          image: require('../../img/alia.jpg'),
+          thumb: require('../../img/alia.jpg'),
+        },
+        {
+            image: require('../../img/alia.jpg'),
+            thumb: require('../../img/alia.jpg'),
+          },
+          {
+              image: require('../../img/alia.jpg'),
+              thumb: require('../../img/alia.jpg'),
+            },
+            {
+              image: require('../../img/alia.jpg'),
+              thumb: require('../../img/alia.jpg'),
+            },
+            {
+              image: require('../../img/alia.jpg'),
+              thumb: require('../../img/alia.jpg'),
+            },
+            {
+                image: require('../../img/alia.jpg'),
+                thumb: require('../../img/alia.jpg'),
+              },
+              {
+                  image: require('../../img/alia.jpg'),
+                  thumb: require('../../img/alia.jpg'),
+                },
+                {
+                  image: require('../../img/alia.jpg'),
+                  thumb: require('../../img/alia.jpg'),
+                },
+                {
+                  image: require('../../img/alia.jpg'),
+                  thumb: require('../../img/alia.jpg'),
+                },
+                {
+                    image: require('../../img/alia.jpg'),
+                    thumb: require('../../img/alia.jpg'),
+                  },
+                  {
+                      image: require('../../img/alia.jpg'),
+                      thumb: require('../../img/alia.jpg'),
+                    },
+                    {
+                      image: require('../../img/alia.jpg'),
+                      thumb: require('../../img/alia.jpg'),
+                    },
+                    {
+                      image: require('../../img/alia.jpg'),
+                      thumb: require('../../img/alia.jpg'),
+                    },
+                    {
+                        image: require('../../img/alia.jpg'),
+                        thumb: require('../../img/alia.jpg'),
+                      },
+                      {
+                          image: require('../../img/alia.jpg'),
+                          thumb: require('../../img/alia.jpg'),
+                        },
+                        {
+                          image: require('../../img/alia.jpg'),
+                          thumb: require('../../img/alia.jpg'),
+                        },
+                        {
+                          image: require('../../img/alia.jpg'),
+                          thumb: require('../../img/alia.jpg'),
+                        },
+  ];
 class SettingsScreen extends Component {
     constructor(props) {
         super(props);
@@ -9,17 +108,8 @@ class SettingsScreen extends Component {
     }
     render() {
         return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <Button title="Change Lock State" onPress={() => {
-                    const { dispatch } = this.props;
-                    dispatch({ type: "Unlock" });
-                }}>
 
-                </Button>
-                <Text>
-                    {this.props.AppLock.Locked.toString()}
-                </Text>
-            </View>
+            <Gallery backgroundColor="" style={{marginBottom:100}} data={data}/>
         );
     }
 }

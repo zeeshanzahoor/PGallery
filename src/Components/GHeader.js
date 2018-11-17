@@ -3,15 +3,20 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,TouchableOpacity
 } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export default class GHeader extends React.Component {
   render() {
     return (
-      <View style={[styles.wrapper, { height: this.props.height }]}>
-        <Text style={styles.logo}>My Gallery</Text>
-      </View>
+      <View style={styles.header}>
+                        <TouchableOpacity onPress={() => {
+                            this.props.navigation.goBack();
+                        }} style={{ justifyContent: 'center', paddingTop: 20, paddingLeft: 10, paddingRight:20, }}>
+                            <Icon name="ios-arrow-back" color="#007AFF" size={30} />
+                        </TouchableOpacity>
+                    </View>
     );
   }
 }
@@ -37,5 +42,20 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     fontWeight: '900',
     marginTop: 20,
-  }
+  },
+  header: {
+    height: 65,
+    backgroundColor: 'white',
+    borderTopWidth: 1,
+    borderTopWidth: 0.5,
+    borderColor: '#ccc',
+    position: 'absolute',
+    top: 0,
+    flex: 1,
+    flexDirection: 'row',
+    width: '100%',
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+    zIndex: 100000,
+},
 });

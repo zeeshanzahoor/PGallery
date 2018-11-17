@@ -4,11 +4,16 @@ import {
     View,
     Image,
     Dimensions, StyleSheet,
-    Button
+    Button,
+    TouchableOpacity
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import withRedux from '../Store/withRedux';
+import Icon from 'react-native-vector-icons/Ionicons';
+import Gallery from 'react-native-photo-gallery';
+import GHeader from '../Components/GHeader';
 
+console.disableYellowBox = true;
 
 const { width, height } = Dimensions.get('window');
 
@@ -42,18 +47,41 @@ const styles = {
     }
 }
 
-const renderPagination = (index, total, context) => {
-    return (
-        <View style={styles.paginationStyle}>
-            <Text style={{ color: 'grey' }}>
-                <Text style={styles.paginationText}>{index + 1}</Text>/{total}
-            </Text>
-        </View>
-    )
-}
+
+const data = [
+    {
+        image: require('../../img/alia.jpg'),
+        thumb: require('../../img/alia.jpg'),
+    },
+    {
+        image: require('../../img/alia.jpeg'),
+        thumb: require('../../img/alia.jpeg'),
+    },
+    {
+        image: require('../../img/momina.jpg'),
+        thumb: require('../../img/momina.jpg'),
+    },
+    {
+        image: require('../../img/taylor.jpg'),
+        thumb: require('../../img/taylor.jpg'),
+    },
+];
+
+
 
 class SwiperScreen extends Component {
-    
+    static navigationOptions = ({ navigation }) => {
+        const { params } = navigation.state;
+        return {
+            params,
+            header:null,
+        };
+    };
+    constructor(props) {
+        super(props);
+        this.IsFullScreen = false;
+        this.state = { backgroundColor: 'white', showPagination: true, };
+    }
     componentWillMount() {
         const { dispatch } = this.props;
         dispatch({ type: "OpenSwiper" });
@@ -63,79 +91,43 @@ class SwiperScreen extends Component {
                 dispatch({ type: "CloseSwiper" });
             }
         );
-        this.props.navigation.setParams({ title: 'your content' })
+    }
+    MakeFullScreen = () => {
+        const { dispatch } = this.props;
+
+        if (this.IsFullScreen) {
+            this.IsFullScreen = false;
+            dispatch({ type: "CloseSwiperFullScreen" });
+            this.setState({ backgroundColor: 'white', showPagination: true, });
+        }
+        else {
+            this.IsFullScreen = true;
+            dispatch({ type: "OpenSwiperFullScreen" });
+            this.props.navigation.setParams(
+                {
+                    header: null,
+                });
+            this.setState({ backgroundColor: 'black', showPagination: false, });
+        }
+    }
+    componentDidMount() {
     }
     componentWillUnmount() {
         this.didBlurSubscription.remove();
     }
     render() {
         return (
-            <View style={mstyles.Container}>
-                <View style={styles.wrapper}>
-                    <Swiper
-                        showsButtons={false}
-                        renderPagination={renderPagination}
-                        style={styles.wrapper}
-                        loop={true}>
-
-                        <View style={styles.slide}>
-                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/alia.jpg')}></Image>
-                        </View>
-                        <View style={styles.slide}>
-                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/momina.jpg')}></Image>
-                        </View>
-                        <View style={styles.slide}>
-                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/taylor.jpg')}></Image>
-                        </View>
-                        <View style={styles.slide}>
-                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/alia.jpg')}></Image>
-                        </View>
-                        <View style={styles.slide}>
-                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/momina.jpg')}></Image>
-                        </View>
-                        <View style={styles.slide}>
-                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/taylor.jpg')}></Image>
-                        </View>
-                        <View style={styles.slide}>
-                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/alia.jpg')}></Image>
-                        </View>
-                        <View style={styles.slide}>
-                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/momina.jpg')}></Image>
-                        </View>
-                        <View style={styles.slide}>
-                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/taylor.jpg')}></Image>
-                        </View>
-                        <View style={styles.slide}>
-                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/alia.jpg')}></Image>
-                        </View>
-                        <View style={styles.slide}>
-                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/momina.jpg')}></Image>
-                        </View>
-                        <View style={styles.slide}>
-                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/taylor.jpg')}></Image>
-                        </View>
-                        <View style={styles.slide}>
-                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/alia.jpg')}></Image>
-                        </View>
-                        <View style={styles.slide}>
-                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/momina.jpg')}></Image>
-                        </View>
-                        <View style={styles.slide}>
-                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/taylor.jpg')}></Image>
-                        </View>
-                        <View style={styles.slide}>
-                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/alia.jpg')}></Image>
-                        </View>
-                        <View style={styles.slide}>
-                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/momina.jpg')}></Image>
-                        </View>
-                        <View style={styles.slide}>
-                            <Image style={{ width: null }} resizeMode="contain" source={require('../../img/taylor.jpg')}></Image>
-                        </View>
-                    </Swiper>
-                </View>
-
+            <View style={{ flex: 1, marginBottom: 60 }}>
+                {!this.IsFullScreen &&
+                   <GHeader {...this.props}/>
+                }
+                <Gallery
+                    showPagination={this.state.showPagination}
+                    onSingleTap={() => {
+                        this.MakeFullScreen();
+                    }} backgroundColor={this.state.backgroundColor} data={data} />
             </View>
+
         )
     }
 }
@@ -145,5 +137,20 @@ export default withRedux(SwiperScreen);
 const mstyles = StyleSheet.create({
     Container: {
 
+    },
+    header: {
+        height: 65,
+        backgroundColor: 'white',
+        borderTopWidth: 1,
+        borderTopWidth: 0.5,
+        borderColor: '#ccc',
+        position: 'absolute',
+        top: 0,
+        flex: 1,
+        flexDirection: 'row',
+        width: '100%',
+        borderBottomWidth: 1,
+        borderBottomColor: '#ccc',
+        zIndex: 100000,
     },
 })

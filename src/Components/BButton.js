@@ -12,7 +12,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 class BIconButton extends React.Component {
   render() {
     return (
-      <TouchableOpacity style={styles.button} onPress={() => {
+      <TouchableOpacity style={this.props.mode ? styles.button : styles.button2} onPress={() => {
         if (this.props.route) {
           this.props.navigation.navigate(this.props.route);
         }
@@ -28,11 +28,11 @@ class BIconButton extends React.Component {
             height: 400,
             cropping: false,
           }).then(image => {
-            
+
           });
         }
       }}>
-        <Icon name={this.props.Icon} size={this.props.size} color='#555' />
+        <Icon name={this.props.Icon} size={this.props.size} color='#3a98fc' />
       </TouchableOpacity>
     );
   }
@@ -43,7 +43,11 @@ const styles = StyleSheet.create({
   button: {
     justifyContent: 'center',
     alignItems: 'center',
-    flex: 1,
-    borderColor: '#ccc',
+    flex:1,
   },
+  button2:{
+    justifyContent: 'center',
+    alignItems: 'center',
+    width:70,
+  }
 });

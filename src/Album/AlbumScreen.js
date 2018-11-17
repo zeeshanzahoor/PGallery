@@ -22,18 +22,19 @@ const formatData = (data, numColumns) => {
 const numColumns = 4;
 class AlbumScreen extends React.Component {
     static navigationOptions = ({ navigation }) => {
-        // const title = navigation.state.params.Title;
-        // return {
-        //     title,
-        //     headerBackTitle:null,
-        // };
+        const title = navigation.state.params.Title;
+        return {
+            title,
+            headerBackTitle:null,
+            
+        };
     };
     renderItem = ({ item, index }) => {
         if (item.empty === true) {
             return <View style={[styles.item, styles.itemInvisible]} />;
         }
         return (
-            <TouchableOpacity onPress={() => {
+            <TouchableOpacity activeOpacity={0.7} onPress={() => {
                 this.props.navigation.navigate("Swiper");
             }} style={styles.item}>
                 <Image style={styles.itemImage} resizeMode="cover" source={require('../../img/momina.jpg')}></Image>

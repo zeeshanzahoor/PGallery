@@ -10,14 +10,14 @@ class GCard extends Component {
         const s = this.props.img.uri;
         return (
             <View style={styles.cardContainer}>
-                <TouchableOpacity style={styles.cardInnerContainer} onPress={() => {
-                    this.props.navigation.navigate("Album", {Title: this.props.Title})
+                <TouchableOpacity activeOpacity={0.7} style={styles.cardInnerContainer} onPress={() => {
+                    this.props.navigation.navigate("Album", { Title: this.props.Title })
                 }}>
-                    <Image blurRadius={25} style={styles.Image} resizeMode="cover" source={s}></Image>
-                    <View style={styles.TitleBox}>
+                                    <View style={styles.TitleBox}>
                         <Text style={styles.Title}>{this.props.Title}</Text>
-                        <Text style={styles.Title}>(0)</Text>
                     </View>
+                    <Image style={styles.Image} resizeMode="cover" source={s}></Image>
+
                 </TouchableOpacity>
             </View>
         );
@@ -28,34 +28,39 @@ export default withNavigation(GCard);
 
 const styles = StyleSheet.create({
     cardContainer: {
-        height: 170,
         width: '48.5%',
-        borderRadius: 7,
-        backgroundColor:'transparent',
+        backgroundColor: 'transparent',
+        
+        height:170,
+        borderRadius:5,
+        position:'relative'
     },
     cardInnerContainer: {
         flex: 1,
-        borderColor: '#eee',
-        borderRadius: 7,
         backgroundColor: '#eee',
+        borderRadius:5,
     },
-    Image: { flex: 1, width: '100%', borderRadius: 7, },
+    Image: { flex: 1, width: '100%', height: 170, 
+    borderRadius:5,
+
+},
     TitleBox: {
-        position: 'absolute',
-        bottom: 0,
         width: '100%',
-        height: '100%',
+        height: 30,
         backgroundColor: 'white',
-        opacity: 0.5,
-        borderRadius:7,
         justifyContent: 'center',
         alignItems: 'center',
         paddingLeft: 10,
+        position:'absolute',
+        bottom:0,
+        left:0,
+        opacity:0.5,
+        zIndex:1000000,
+        borderBottomLeftRadius:5,
+        borderBottomRightRadius:5,
     },
     Title: {
-        color: '#999',
-        fontWeight: 'bold',
-        textAlign: 'center',
-        fontSize: 23,
+        padding: 5,
+        fontWeight:'bold'
     }
 });

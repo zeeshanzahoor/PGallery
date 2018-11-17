@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button, Image } from 'react-native';
+import { View, Text, Button, Image, TextInput } from 'react-native';
 import { GHeader } from '../Components';
 import ImagePicker from 'react-native-image-crop-picker';
 var RNFS = require('react-native-fs');
@@ -38,24 +38,34 @@ class FavouriteScreen extends Component {
         }).then((response) => {
             console.log(response.assets[0].image);
             console.log(response.assets);
-             RNFS.copyAssetsFileIOS('assets-library://asset/asset.JPG?id=' + response.assets[0].localIdentifier, p+'/check.jpg', 200, 200).then((v) => console.log(v));
-             this.setState({ image: response.assets[0].image });
+            RNFS.copyAssetsFileIOS('assets-library://asset/asset.JPG?id=' + response.assets[0].localIdentifier, p + '/check.jpg', 200, 200).then((v) => console.log(v));
+            this.setState({ image: response.assets[0].image });
         });
     }
     render() {
-
+        let t = "zee";
+        if(this.state.image)
+        {
+            t = this.state.image.uri;
+        }
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <TextInput
+                    editable={true}
+                    maxLength={40}
+                    value={t}
+                />
                 <Button title="Select Pic" onPress={() => {
                     ImagePicker.openPicker({
                         width: 300,
                         height: 400,
                         cropping: false,
                     }).then(image => {
+
                         this.setState({
                             image: { uri: 'photos://' + image.localIdentifier, name: image.filename, width: 400, height: 400, mime: image.mime },
                         });
-
+                        console.log(this.state);
                     });
                 }}>
 

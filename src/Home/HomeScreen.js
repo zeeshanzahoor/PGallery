@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Button } from 'react-native';
 import { GContainer, GCard, GHeader } from '../Components';
 
 import Constants from '../Constants';
@@ -17,6 +17,16 @@ const CreateAlbumChunkComps = (props) => {
             })
         }
     </View>
+}
+const CreateWarningCard = (pops) => {
+    return(<View style={styles.warningContainer}>
+        <Text style={styles.warningText}>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+        </Text>
+        <Button title="Setup Password">
+            
+        </Button>
+    </View>);
 }
 
 class HomeScreen extends Component {
@@ -54,20 +64,22 @@ class HomeScreen extends Component {
         }
         return (
             <GContainer noPadding>
+
                 <ScrollView showsVerticalScrollIndicator={false} bouncesZoom={true} contentContainerStyle={styles.innerContainer}>
+                    <CreateWarningCard></CreateWarningCard>
                     {
                         AlbumComps.map((item, index) => {
                             return <CreateAlbumChunkComps key={index} Items={item} />
                         })
                     }
                 </ScrollView>
-                <Modal isVisible={this.state.showModal}>
+                <Modal isVisible={this.state.showModal} animationIn='slideInDown' animationOut='slideOutUp' useNativeDriver={true}>
                     <CreateAlbumScreen {...this.props} Toggle={this.showModal}></CreateAlbumScreen>
                 </Modal>
             </GContainer>
         );
     }
-    
+
 }
 function mapStateToProps(state) {
     return state;
@@ -77,7 +89,7 @@ function mapStateToProps(state) {
 
 //const connectedPage = connect(mapStateToProps)(HomeScreen);
 //export default connectedPage;
- export default withRedux(HomeScreen);
+export default withRedux(HomeScreen);
 
 
 const styles = StyleSheet.create({
@@ -86,10 +98,23 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginBottom: 10,
     },
+    warningContainer: {
+        backgroundColor:'#F0EFF3',
+        marginBottom:10,
+        borderRadius:5,
+        padding:20,
+    },
+    warningText:{
+        color:'black',
+        fontSize:13,
+        fontWeight:'500',
+        textAlign:'center'
+    },
     innerContainer: {
         margin: 0,
         padding: 10,
         paddingTop: 15,
+        paddingBottom: 60,
     },
     WarningCard: {
         height: 100,

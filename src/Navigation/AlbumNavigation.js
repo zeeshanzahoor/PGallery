@@ -9,11 +9,16 @@ import { Button, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
+
 const AlbumStackNavigation = createStackNavigator({
+
     Home: {
         screen: HomeScreen,
         navigationOptions: ({ navigate, navigation }) => ({
             title: "Albums",
+            headerStyle:{
+                opacity:0.9
+            },
             headerRight: <TouchableOpacity onPress={navigation.getParam('showModal')}>
                 <Icon name="ios-add" size={30} style={{ marginRight: 20, }} />
             </TouchableOpacity>
@@ -24,8 +29,7 @@ const AlbumStackNavigation = createStackNavigator({
     },
     Swiper: {
         screen: SwiperScreen,
-
-    }
+    },
 });
 
 // const AlbumStackNavigation = createStackNavigator({
