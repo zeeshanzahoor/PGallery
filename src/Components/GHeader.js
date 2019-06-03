@@ -3,20 +3,24 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View,TouchableOpacity
+  View, TouchableOpacity
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import FadeIn from './FadeIn';
 
 export default class GHeader extends React.Component {
   render() {
     return (
       <View style={styles.header}>
-                        <TouchableOpacity onPress={() => {
-                            this.props.navigation.goBack();
-                        }} style={{ justifyContent: 'center', paddingTop: 20, paddingLeft: 10, paddingRight:20, }}>
-                            <Icon name="ios-arrow-back" color="#007AFF" size={30} />
-                        </TouchableOpacity>
-                    </View>
+        <TouchableOpacity onPress={() => {
+          this.props.navigation.goBack();
+        }} style={{ justifyContent: 'center', paddingTop: 20, paddingLeft: 10, paddingRight: 20, }}>
+          <FadeIn duration={1000}>
+            <Icon name="ios-arrow-back" color="#007AFF" size={30} />
+          </FadeIn>
+
+        </TouchableOpacity>
+      </View>
     );
   }
 }
@@ -57,5 +61,5 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
     zIndex: 100000,
-},
+  },
 });

@@ -36,8 +36,6 @@ class FavouriteScreen extends Component {
                 ]
             }
         }).then((response) => {
-            console.log(response.assets[0].image);
-            console.log(response.assets);
             RNFS.copyAssetsFileIOS('assets-library://asset/asset.JPG?id=' + response.assets[0].localIdentifier, p + '/check.jpg', 200, 200).then((v) => console.log(v));
             this.setState({ image: response.assets[0].image });
         });
@@ -53,17 +51,15 @@ class FavouriteScreen extends Component {
                 <TextInput
                     editable={true}
                     maxLength={40}
-                    value={t}
-                />
+                    value={t} />
                 <Button title="Select Pic" onPress={() => {
                     ImagePicker.openPicker({
                         width: 300,
                         height: 400,
                         cropping: false,
                     }).then(image => {
-
                         this.setState({
-                            image: { uri: 'photos://' + image.localIdentifier, name: image.filename, width: 400, height: 400, mime: image.mime },
+                            image: { uri: "/Users/zahoor/Library/Developer/CoreSimulator/Devices/9AABF960-B82C-470C-93F9-C3EB9209920F/data/Containers/Data/Application/6D43331F-D126-4AFF-9671-A0390354D91B/Documents/MyImages/IMG_0006.HEIC", name: image.filename, width: 400, height: 400, mime: image.mime },
                         });
                         console.log(this.state);
                     });

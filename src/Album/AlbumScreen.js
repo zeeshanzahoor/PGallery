@@ -4,16 +4,17 @@ import { GContainer } from '../Components';
 import { GHeader } from "../Components";
 import Constants from '../Constants';
 import withRedux from '../Store/withRedux';
+var RNFS = require('react-native-fs');
 
-const data = [
-    { key: 'A' }, { key: 'B' }, { key: 'C' }, { key: 'D' }, { key: 'E' }, { key: 'F' }, { key: 'G' }, { key: 'H' }, { key: 'I' }, { key: 'J' },
-];
+
+const MyImagesPath = RNFS.DocumentDirectoryPath + '/MyImages';
+
 
 const formatData = (data, numColumns) => {
     const numberOfFullRows = Math.floor(data.length / numColumns);
     let numberOfElementsLastRow = data.length - (numberOfFullRows * numColumns);
     while (numberOfElementsLastRow !== numColumns && numberOfElementsLastRow !== 0) {
-        data.push({ key: `blank-${numberOfElementsLastRow}`, empty: true });
+        data.push({ key: 'blank-${numberOfElementsLastRow}', empty: true });
         numberOfElementsLastRow++;
     }
     return data;
@@ -21,12 +22,22 @@ const formatData = (data, numColumns) => {
 
 const numColumns = 4;
 class AlbumScreen extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { ImageData: [] };
+        RNFS.readDir(MyImagesPath)
+            .then((result) => {
+                console.log(result);
+                this.setState({
+                    ImageData: result
+                });
+            })
+    }
     static navigationOptions = ({ navigation }) => {
         const title = navigation.state.params.Title;
         return {
             title,
-            headerBackTitle:null,
-            
+            headerBackTitle: null,
         };
     };
     renderItem = ({ item, index }) => {
@@ -34,10 +45,10 @@ class AlbumScreen extends React.Component {
             return <View style={[styles.item, styles.itemInvisible]} />;
         }
         return (
-            <TouchableOpacity activeOpacity={0.7} onPress={() => {
-                this.props.navigation.navigate("Swiper");
+            <TouchableOpacity key={index} activeOpacity={0.7} onPress={() => {
+                this.props.navigation.navigate("Swiper", { ImageData: this.state.ImageData, initialIndex: index });
             }} style={styles.item}>
-                <Image style={styles.itemImage} resizeMode="cover" source={require('../../img/momina.jpg')}></Image>
+                <Image style={styles.itemImage} resizeMode="cover" source={{ uri: item.path, name: item.filename, width: null, height: null, mime: item.mime }}></Image>
             </TouchableOpacity>
         );
     };
@@ -45,7 +56,7 @@ class AlbumScreen extends React.Component {
         return (
             <GContainer noPadding>
                 <FlatList
-                    data={formatData(data, numColumns)}
+                    data={formatData(this.state.ImageData, numColumns)}
                     style={styles.container}
                     renderItem={this.renderItem}
                     numColumns={numColumns} />

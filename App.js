@@ -13,6 +13,7 @@ import withRedux from "./src/Store/withRedux";
 import LockScreen from './src/Lock/LockScreen';
 import {SetCredentialScreen} from './src/Setup';
 
+console.disableYellowBox = true;
 
 class App extends React.Component {
   constructor(props) {

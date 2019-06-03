@@ -5,6 +5,10 @@ import realm from '../DB/Schema.js';
 const INITIAL_STATE = {
     Locked: false,
 };
+const INITIAL_APP_STATE = {
+    Swiper: false,
+    SwiperFullScreen: false,
+}
 
 const AppLock = (state = INITIAL_STATE, action) => {
     switch (action.type) {
@@ -18,10 +22,7 @@ const AppLock = (state = INITIAL_STATE, action) => {
     }
 };
 
-const INITIAL_APP_STATE = {
-    Swiper: false,
-    SwiperFullScreen: false,
-}
+
 const AppState = (state = INITIAL_APP_STATE, action) => {
     switch (action.type) {
         case "OpenSwiper":
